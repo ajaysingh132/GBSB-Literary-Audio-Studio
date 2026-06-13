@@ -1,15 +1,90 @@
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GBSB Literary Audio Studio</title>
+
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<h1>GBSB Literary Audio Studio</h1>
+<header>
+<h1>🎙️ GBSB Literary Audio Studio</h1>
+<p>भारतीय साहित्य, दर्शन और लोकसंस्कृति का श्रव्य मंच</p>
+</header>
 
-<p>Build Version 1.0</p>
+<div class="card">
+
+<label>📚 पुस्तक का नाम</label>
+<input type="text" id="bookName" placeholder="पुस्तक का नाम">
+
+<label>✍️ लेखक का नाम</label>
+<input type="text" id="authorName" placeholder="लेखक">
+
+<label>📖 अध्याय</label>
+<input type="text" id="chapterName" placeholder="अध्याय">
+
+<label>📝 सामग्री</label>
+<textarea id="content" rows="10"
+placeholder="यहाँ अपनी सामग्री लिखें..."></textarea>
+
+<div id="counter">
+शब्द: 0 | अक्षर: 0
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>🎭 साहित्य प्रकार</h3>
+
+<select id="literaryType">
+
+<option>पुस्तक</option>
+<option>कहानी</option>
+<option>कविता</option>
+<option>गीत</option>
+<option>ग़ज़ल</option>
+<option>दोहा</option>
+<option>छंद</option>
+<option>भजन</option>
+<option>भाषण</option>
+
+</select>
+
+</div>
+
+<div class="card">
+
+<h3>🎙️ वाचन शैली</h3>
+
+<select id="voiceSelect">
+
+<option>अजय कथावाचक</option>
+<option>महिला कथावाचक</option>
+<option>युवा पुरुष</option>
+<option>समाचार वाचक</option>
+<option>आध्यात्मिक वाचक</option>
+
+</select>
+
+<button id="generateBtn">
+Generate Audio
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>🔊 Audio Preview</h3>
+
+<audio controls id="audioPlayer"></audio>
+
+</div>
+
+<script src="app.js"></script>
 
 </body>
-</html>
+  </html>
