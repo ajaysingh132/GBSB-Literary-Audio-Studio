@@ -30,3 +30,21 @@ alert(
 );
 
 });
+।function generateAudio() {
+
+const text =
+document.getElementById("content").value;
+
+if(text.trim()===""){
+alert("कृपया सामग्री लिखें");
+return;
+}
+
+const speech =
+new SpeechSynthesisUtterance(text);
+
+speech.lang="hi-IN";
+
+window.speechSynthesis.speak(speech);
+
+}
