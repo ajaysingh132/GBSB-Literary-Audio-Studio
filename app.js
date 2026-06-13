@@ -1,50 +1,84 @@
+// =========================
+// GBSB Literary Audio Studio
+// Sprint-2 Audio Engine
+// =========================
+
+// Counter System
 
 const content = document.getElementById("content");
 const counter = document.getElementById("counter");
 
-content.addEventListener("input", () => {
+content.addEventListener("input", updateCounter);
 
-const text = content.value;
+function updateCounter() {
 
-const words =
-text.trim() === ""
-? 0
-: text.trim().split(/\s+/).length;
+    const text = content.value;
 
-const chars = text.length;
+    const words =
+        text.trim() === ""
+            ? 0
+            : text.trim().split(/\s+/).length;
 
-counter.innerHTML =
-`शब्द: ${words} | अक्षर: ${chars}`;
+    const chars = text.length;
 
-});
-
-document
-.getElementById("generateBtn")
-.addEventListener("click", () => {
-
-const type =
-document.getElementById("literaryType").value;
-
-alert(
-`Audio Generation जल्द जोड़ा जाएगा.\n\nसाहित्य प्रकार: ${type}`
-);
-
-});
-।function generateAudio() {
-
-const text =
-document.getElementById("content").value;
-
-if(text.trim()===""){
-alert("कृपया सामग्री लिखें");
-return;
+    counter.innerHTML =
+        `शब्द: ${words} | अक्षर: ${chars}`;
 }
 
-const speech =
-new SpeechSynthesisUtterance(text);
+// Audio Engine
 
-speech.lang="hi-IN";
+document
+    .getElementById("generateBtn")
+    .addEventListener("click", generateAudio);
 
-window.speechSynthesis.speak(speech);
+function generateAudio() {
 
+    const text =
+        document.getElementById("content").value;
+
+    if (text.trim() === "") {
+        alert("कृपया सामग्री लिखें");
+        return;
+    }
+
+    // पहले से चल रहा वाचन रोकें
+    window.speechSynthesis.cancel();
+
+    const speech =
+        new SpeechSynthesisUtterance(text);
+
+    speech.lang = "hi-IN";
+
+    // Voice Style
+
+    const voiceStyle =
+        document.getElementById("voiceSelect").value;
+
+    switch (voiceStyle) {
+
+        case "अजय कथावाचक":
+            speech.rate = 0.95;
+            break;
+
+        case "महिला कथावाचक":
+            speech.rate = 1.0;
+            break;
+
+        case "युवा पुरुष":
+            speech.rate = 1.1;
+            break;
+
+        case "समाचार वाचक":
+            speech.rate = 0.9;
+            break;
+
+        case "आध्यात्मिक वाचक":
+            speech.rate = 0.8;
+            break;
+
+        default:
+            speech.rate = 1;
+    }
+
+    window.speechSynthesis.speak(speech);
 }
