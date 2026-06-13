@@ -79,6 +79,13 @@ function generateAudio() {
         default:
             speech.rate = 1;
     }
+    const btn = document.getElementById("generateBtn");
+
+btn.addEventListener("click", () => {
+    alert("Button Working");
+});
 
     window.speechSynthesis.speak(speech);
 }
+
+console.log("App Loaded");
